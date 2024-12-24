@@ -62,6 +62,25 @@ def select_team_members() -> Tuple[str, str]:
 # Streamlit UI
 st.title("🎉 The-Guy Happy Hour Takeout Team Selector")
 
+st.markdown(
+    """
+### Why does this exist? 🤔
+
+Ever noticed how choosing who gets to handle the takeout order
+feels like picking tribute for the Hunger Games?
+*"May the odds of getting everyone's order right be ever in your favor!"*
+
+This app randomly selects two brave souls each week to tackle:
+- 🗒️ Collecting everyone's picky orders
+- 💰 Managing the complicated money situation
+- 🚗 Braving (elevator) traffic for pickup
+- 📦 Distribution of food without mixing up orders
+
+Don't worry, heroes - you only have to do this once every... *checks notes*...
+few weeks!
+"""
+)
+
 # Get current selection
 current_selection = get_current_selection()
 
