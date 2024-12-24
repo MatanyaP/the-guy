@@ -90,8 +90,11 @@ if current_selection:
     )
 
     # Show when the next selection will be available
-    current_week = get_current_week_number()
-    st.info(f"Next selection will be available in week {current_week + 1}")
+    current_date = datetime.now()
+    next_selection = current_date + timedelta(days=7)
+    st.info(
+        f"Next selection will be available on {next_selection.strftime('%A, %B %d')}"
+    )
 else:
     st.write("No selection has been made for this week yet!")
 
@@ -109,9 +112,11 @@ history = selections_collection.find().sort("timestamp", -1).limit(5)
 
 history_data = []
 for entry in history:
+    # Format the timestamp nicely
+    selection_date = entry["timestamp"].strftime("%B %d, %Y")
     history_data.append(
         {
-            "Week": f"Week {entry['week']}, {entry['year']}",
+            "Date": selection_date,
             "Team Members": f"{entry['team_members'][0]} and {entry['team_members'][1]}",
         }
     )
@@ -123,4 +128,4 @@ else:
 
 # Footer
 st.markdown("---")
-st.markdown("Still Learning to Code Team")
+st.markdown("Made with ❤️ for streamlined Happy Hour organization")
